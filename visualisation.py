@@ -18,6 +18,7 @@ def categoryVsSample(train):
 
 def plotNetwork(history):
 
+    print(history.history.keys())
     # Plot training & validation accuracy values
     plt.plot(history.history['accuracy'])
     plt.plot(history.history['val_accuracy'])
@@ -25,8 +26,8 @@ def plotNetwork(history):
     plt.ylabel('Accuracy')
     plt.xlabel('Epoch')
     plt.legend(['Train', 'Test'], loc='upper left')
-    plt.show()
     plt.savefig("figures/Accuracy_vs_Epochs.png", bbox_inches="tight", dpi=100)
+    plt.clf() # clear plot
 
     # Plot training & validation loss values
     plt.plot(history.history['loss'])
@@ -35,5 +36,5 @@ def plotNetwork(history):
     plt.ylabel('Loss')
     plt.xlabel('Epoch')
     plt.legend(['Train', 'Test'], loc='upper left')
-    plt.show()
+
     plt.savefig("figures/Loss_vs_Epochs.png", bbox_inches="tight", dpi=100)
