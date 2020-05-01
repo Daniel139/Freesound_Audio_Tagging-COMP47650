@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 from matplotlib import cm
 
 def categoryVsSample(train):
+
     df_grouped = train.groupby(['label', 'manually_verified']).count().drop(['freesound_id', 'license'], axis=1)
 
     cmap = cm.get_cmap('viridis')
@@ -17,7 +18,6 @@ def categoryVsSample(train):
 
 def plotNetwork(history):
 
-    print(history.history.keys())
     # Plot training & validation accuracy values
     plt.plot(history.history['accuracy'])
     plt.plot(history.history['val_accuracy'])
