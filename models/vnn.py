@@ -89,6 +89,6 @@ def fit(x_train, y_train, x_val, y_val):
     y_pred = np.argmax(y_pred, axis=1)
     vanilla_nn = classification_report(y_val, y_pred)
 
-    plotNetwork(history)
+    plotNetwork(history, "vnn")
 
     return vanilla_nn

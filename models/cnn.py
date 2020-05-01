@@ -63,6 +63,6 @@ def fit(x_train, y_train, x_val, y_val):
     # y_pred = np.argmax(y_pred, axis=1)
     cnn = classification_report(y_val, y_pred)
 
-    plotNetwork(history)
+    plotNetwork(history, "cnn")
 
     return cnn

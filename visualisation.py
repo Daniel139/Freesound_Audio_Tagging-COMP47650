@@ -2,7 +2,6 @@ import matplotlib.pyplot as plt
 from matplotlib import cm
 
 def categoryVsSample(train):
-
     df_grouped = train.groupby(['label', 'manually_verified']).count().drop(['freesound_id', 'license'], axis=1)
 
     cmap = cm.get_cmap('viridis')
@@ -16,9 +15,9 @@ def categoryVsSample(train):
 
     plot.figure.savefig("figures/Category_vs_No.samples.png", bbox_inches="tight", dpi=100)
 
-def plotNetwork(history):
+def plotNetwork(history, model):
 
-    print(history.history.keys())
+    plt.clf() # clear plot
     # Plot training & validation accuracy values
     plt.plot(history.history['accuracy'])
     plt.plot(history.history['val_accuracy'])
@@ -26,7 +25,7 @@ def plotNetwork(history):
     plt.ylabel('Accuracy')
     plt.xlabel('Epoch')
     plt.legend(['Train', 'Test'], loc='upper left')
-    plt.savefig("figures/Accuracy_vs_Epochs.png", bbox_inches="tight", dpi=100)
+    plt.savefig("figures/" + model + "-Accuracy_vs_Epochs.png", bbox_inches="tight", dpi=100)
     plt.clf() # clear plot
 
     # Plot training & validation loss values
@@ -37,4 +36,4 @@ def plotNetwork(history):
     plt.xlabel('Epoch')
     plt.legend(['Train', 'Test'], loc='upper left')
 
-    plt.savefig("figures/Loss_vs_Epochs.png", bbox_inches="tight", dpi=100)
+    plt.savefig("figures/" + model + "-Loss_vs_Epochs.png", bbox_inches="tight", dpi=100)

@@ -22,16 +22,16 @@ def main():
     # sample submission
     sample_submission = pd.read_csv("submission/" + "test_post_competition_scoring_clips.csv")
     sample_submission = sample_submission[['fname']].copy()
-    
-    # download data, organise directory and install packages
-    download_dataset.exec()
-    # plot category vs. no. of samples
-    visualisation.categoryVsSample(train)
-    
-    # preprocess and compute mel specs and metrics
-    preprocess.preprocess(train, sample_submission)
-    preprocess.computeLogMel(train, sample_submission)
-    preprocess.computeMetrics(train, sample_submission)
+    #
+    # # download data, organise directory and install packages
+    # download_dataset.exec()
+    # # plot category vs. no. of samples
+    # visualisation.categoryVsSample(train)
+    #
+    # # preprocess and compute mel specs and metrics
+    # preprocess.preprocess(train, sample_submission)
+    # preprocess.computeLogMel(train, sample_submission)
+    # preprocess.computeMetrics(train, sample_submission)
 
     # get files from original
     file_to_tag = pd.Series(train['label'].values, index=train['fname']).to_dict()
