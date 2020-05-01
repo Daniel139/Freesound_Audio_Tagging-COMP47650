@@ -22,53 +22,53 @@ or by executing main.py which executes the commands in dataset.sh.
 ## Repository Structure
 The file structure of this repository is the following:
 
-FreesoundAudioTagging
--checkpoints
-   |
-    ----> cnn-weights.{epoch:02d}-{val_loss:.2f}.hdf5
-    ----> vnn-weights.{epoch:02d}-{val_loss:.2f}.hdf5
-- data
-    |
-     ---> audio_test_trim
-        |
-        ===> abcd1234.wav.npy
-     ---> audio_train_trim
-        |
-        ===> abcd1234.wav.npy
-     ---> mel_spec_test
-        |
-        ===> abcd1234.wav.npy
-     ---> mel_spec_train
-        |
-        ===> abcd1234.wav.npy
-dataset.sh
-download_dataset.py
-- figs
-    |
-     ---> cnn-Accuracy_vs_Epochs.png
-     ---> cnn-Loss_vs_Epochs.png
-     ---> vnn-Accuracy_vs_Epochs.png
-     ---> vnn-Loss_vs_Epochs.png
-freesound_audio_tagging.ipynb
-- log
-    |
-     ---> log1.txt
-main.py
-- models
-    |
-    ----> cnn.py
-    ----> sgd.py
-    ----> svm.py
-    ----> vnn.py
-preprocess.py
-requirements.txt
-- submission
-    |
-     ---> test_post_competition_scoring_clips.csv
-     ---> train_post_competition.csv
-README.md
-summary_feats_funcs.py
-visualisation.py
-                                
-14 directories, 52232 files     
+FreesoundAudioTagging       
+-checkpoints        
+   |        
+    ----> cnn-weights.{epoch:02d}-{val_loss:.2f}.hdf5       
+    ----> vnn-weights.{epoch:02d}-{val_loss:.2f}.hdf5       
+- data      
+    |              
+     ---> audio_test_trim       
+        |       
+        ===> abcd1234.wav.npy       
+     ---> audio_train_trim      
+        |       
+        ===> abcd1234.wav.npy       
+     ---> mel_spec_test     
+        |       
+        ===> abcd1234.wav.npy       
+     ---> mel_spec_train        
+        |       
+        ===> abcd1234.wav.npy       
+dataset.sh      
+download_dataset.py     
+- figs      
+    |       
+     ---> cnn-Accuracy_vs_Epochs.png        
+     ---> cnn-Loss_vs_Epochs.png        
+     ---> vnn-Accuracy_vs_Epochs.png        
+     ---> vnn-Loss_vs_Epochs.png        
+freesound_audio_tagging.ipynb       
+- log       
+    |       
+     ---> log1.txt      
+main.py     
+- models        
+    |       
+    ----> cnn.py        
+    ----> sgd.py        
+    ----> svm.py        
+    ----> vnn.py        
+preprocess.py       
+requirements.txt        
+- submission        
+    |       
+     ---> test_post_competition_scoring_clips.csv       
+     ---> train_post_competition.csv        
+README.md       
+summary_feats_funcs.py      
+visualisation.py        
+                                        
+14 directories, 52232 files             
 
