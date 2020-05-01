@@ -5,6 +5,7 @@ from keras import Sequential
 from keras.callbacks import ModelCheckpoint
 from keras.layers import Dense, Dropout
 from sklearn.metrics import classification_report
+from visualisation import plotNetwork
 
 
 def fit(x_train, y_train, x_val, y_val):
@@ -23,8 +24,7 @@ def fit(x_train, y_train, x_val, y_val):
         monitor='val_loss',
         verbose=0,
         save_best_only=True,
-        save_weights_only=True,
-        mode='min',
+        mode='max',
         period=5)
 
     # MODEL SPECIFICATIONS
@@ -77,7 +77,7 @@ def fit(x_train, y_train, x_val, y_val):
     ###                            ###
     ###                            ###
 
-    model.fit(x_train,  # train inputs
+    history = model.fit(x_train,  # train inputs
               y_train,  # train targets
               batch_size=batch_size,  # batch size
               epochs=max_epochs,  # epochs that we will train for (assuming early stopping doesn't kick in)
@@ -88,5 +88,7 @@ def fit(x_train, y_train, x_val, y_val):
     y_pred = model.predict(x_val)
     y_pred = np.argmax(y_pred, axis=1)
     vanilla_nn = classification_report(y_val, y_pred)
+
+    plotNetwork(history)
 
     return vanilla_nn

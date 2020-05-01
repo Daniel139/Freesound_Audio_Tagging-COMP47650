@@ -1,6 +1,5 @@
-from keras.layers import Add
+import matplotlib.pyplot as plt
 from matplotlib import cm
-
 
 def categoryVsSample(train):
     df_grouped = train.groupby(['label', 'manually_verified']).count().drop(['freesound_id', 'license'], axis=1)
@@ -15,3 +14,26 @@ def categoryVsSample(train):
     plot.set_ylabel("No. of Samples")
 
     plot.figure.savefig("figures/Category_vs_No.samples.png", bbox_inches="tight", dpi=100)
+
+def plotNetwork(history):
+
+    print(history.history.keys())
+    # Plot training & validation accuracy values
+    plt.plot(history.history['accuracy'])
+    plt.plot(history.history['val_accuracy'])
+    plt.title('Model accuracy')
+    plt.ylabel('Accuracy')
+    plt.xlabel('Epoch')
+    plt.legend(['Train', 'Test'], loc='upper left')
+    plt.show()
+    plt.savefig("figures/Accuracy_vs_Epochs.png", bbox_inches="tight", dpi=100)
+
+    # Plot training & validation loss values
+    plt.plot(history.history['loss'])
+    plt.plot(history.history['val_loss'])
+    plt.title('Model loss')
+    plt.ylabel('Loss')
+    plt.xlabel('Epoch')
+    plt.legend(['Train', 'Test'], loc='upper left')
+    plt.show()
+    plt.savefig("figures/Loss_vs_Epochs.png", bbox_inches="tight", dpi=100)
