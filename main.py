@@ -10,6 +10,7 @@ import preprocess
 import models.sgd
 import models.svm
 import models.vnn
+import models.cnn
 
 import pandas as pd
 
@@ -21,16 +22,16 @@ def main():
     # sample submission
     sample_submission = pd.read_csv("submission/" + "test_post_competition_scoring_clips.csv")
     sample_submission = sample_submission[['fname']].copy()
-
-    # download data, organise directory and install packages
-    download_dataset.exec()
-    # plot category vs. no. of samples
-    visualisation.categoryVsSample(train)
-
-    # preprocess and compute mel specs and metrics
-    preprocess.preprocess(train, sample_submission)
-    preprocess.computeLogMel(train, sample_submission)
-    preprocess.computeMetrics(train, sample_submission)
+    #
+    # # download data, organise directory and install packages
+    # download_dataset.exec()
+    # # plot category vs. no. of samples
+    # visualisation.categoryVsSample(train)
+    #
+    # # preprocess and compute mel specs and metrics
+    # preprocess.preprocess(train, sample_submission)
+    # preprocess.computeLogMel(train, sample_submission)
+    # preprocess.computeMetrics(train, sample_submission)
 
     # get files from original
     file_to_tag = pd.Series(train['label'].values, index=train['fname']).to_dict()
@@ -71,12 +72,17 @@ def main():
     best_parameters, accuracy, test_accuracy = models.svm.grid_search(x_train, y_train, x_val, y_val)
     best_svm = models.svm.fit(x_train, y_train, x_val, y_val, encoder, best_parameters)
 
+    # vanilla neural network
     vnn = models.vnn.fit(x_train, y_train, x_val, y_val)
+
+    # convolutional neural network
+    cnn = models.cnn.fit(x_train, y_train, x_val, y_val)
 
     print("\n\n-------------------------------SGD-------------------------------\n", sgd)
     print("\n\n-------------------------------SVM-------------------------------\n", svm)
     print("\n\n-----------------------------Best SGD----------------------------\n", best_svm)
     print("\n\n----------------------------Vanilla NN---------------------------\n", vnn)
+    print("\n\n-------------------------------CNN-------------------------------\n", cnn)
 
 
 

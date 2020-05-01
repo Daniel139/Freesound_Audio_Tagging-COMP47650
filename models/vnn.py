@@ -20,7 +20,7 @@ def fit(x_train, y_train, x_val, y_val):
 
     # MODEL CHECKPOINT
     mc = ModelCheckpoint(
-        filepath='checkpoints/weights.{epoch:02d}-{val_loss:.2f}.hdf5',
+        filepath='checkpoints/vnn-weights.{epoch:02d}-{val_loss:.2f}.hdf5',
         monitor='val_loss',
         verbose=0,
         save_best_only=True,
@@ -81,7 +81,7 @@ def fit(x_train, y_train, x_val, y_val):
               y_train,  # train targets
               batch_size=batch_size,  # batch size
               epochs=max_epochs,  # epochs that we will train for (assuming early stopping doesn't kick in)
-              callbacks=[mc],  # early stopping
+              callbacks=[early_stopping, mc],  # early stopping
               validation_data=(x_val, y_val),  # validation data
               verbose=1  # shows some information for each epoch so we can analyse
               )
