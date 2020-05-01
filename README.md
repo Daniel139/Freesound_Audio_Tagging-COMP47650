@@ -23,7 +23,7 @@ or by executing main.py which executes the commands in dataset.sh.
 The file structure of this repository is the following:
 
 FreesoundAudioTagging       
--checkpoints        
+- checkpoints        
    |        
     ----> cnn-weights.{epoch:02d}-{val_loss:.2f}.hdf5       
     ----> vnn-weights.{epoch:02d}-{val_loss:.2f}.hdf5       
@@ -70,5 +70,5 @@ README.md
 summary_feats_funcs.py      
 visualisation.py        
                                         
-14 directories, 52232 files             
+6 directories, 52232 files             
 
